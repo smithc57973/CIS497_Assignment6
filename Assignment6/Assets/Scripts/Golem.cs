@@ -21,7 +21,6 @@ public class Golem : Enemy
     protected override void Awake()
     {
         base.Awake();
-        health = 120;
         GameManager.Instance.score += 2;
     }
 
