@@ -1,24 +1,35 @@
-﻿using System.Collections;
+﻿/*
+ * Chris Smith
+ * Assignment 6
+ * Script to manage player
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Enemy
+public class Player : MonoBehaviour, IDamageable
 {
-    public override void TakeDamage(int amount)
-    {
-        throw new System.NotImplementedException();
-    }
+    //Map boundaries
+    public int lBound = -423;
+    public int rBound = -300;
+    public int tBound = 565;
+    public int bBound = 497;
 
-    protected override void Attack(int dmg)
-    {
-        throw new System.NotImplementedException();
-    }
+    //Player vars
+    public float speed;
+    public int health;
 
     // Start is called before the first frame update
-    protected override void Awake()
+    public void Awake()
     {
-        base.Awake();
         speed = 20f;
+        health = 3;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
     }
 
     // Update is called once per frame
@@ -31,6 +42,41 @@ public class Player : Enemy
         Vector3 move = transform.right * -z + transform.forward * x;
         //Apply move
         gameObject.transform.Translate(move * speed * Time.deltaTime);
-            
+
+        //Keep the player in bounds
+        if (gameObject.transform.position.x < bBound)
+        {
+            gameObject.transform.position = new Vector3(bBound, gameObject.transform.position.y, gameObject.transform.position.z);
+        }
+        if (gameObject.transform.position.x > tBound)
+        {
+            gameObject.transform.position = new Vector3(tBound, gameObject.transform.position.y, gameObject.transform.position.z);
+        }
+        if (gameObject.transform.position.z < lBound)
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, lBound);
+        }
+        if (gameObject.transform.position.z > rBound)
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, rBound);
+        }
+
+        //Return to main menu if die
+        if (health <= 0)
+        {
+            GameManager.Instance.LoadLevel("MainMenu");
+        }
     }
+
+    public void onCollisionEnter(Collision other)
+    {
+        Debug.Log("Collision");
+        Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            int dmg = other.gameObject.GetComponent<Weapon>().dmgBonus;
+            TakeDamage(dmg);
+        }
+    }
+
 }

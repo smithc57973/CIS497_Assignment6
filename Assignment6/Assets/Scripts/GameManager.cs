@@ -11,8 +11,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public int score;
-    //public bool gameOver;
+    //public int score;
     public GameObject pauseMenu;
 
     private string currentScene = string.Empty;

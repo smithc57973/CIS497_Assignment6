@@ -8,10 +8,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour, IDamageable
+public abstract class Enemy : MonoBehaviour
 {
     //Enemy attributes
     protected float speed;
+    protected int damage;
     [SerializeField] protected Weapon weapon;
 
     protected virtual void Awake()
@@ -19,7 +20,5 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         speed = 5f;
         weapon = gameObject.AddComponent<Weapon>();
     }
-
-    protected abstract void Attack(int dmg);
-    public abstract void TakeDamage(int amount);
+    
 }

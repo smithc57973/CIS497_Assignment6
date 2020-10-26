@@ -13,15 +13,10 @@ public class Weapon : MonoBehaviour
     public int dmgBonus;
     public Enemy enemyHoldingWeapon;
 
-    public void Recharge()
-    {
-        Debug.Log("Recharging Weapon.");
-    }
-
     private void Awake()
     {
         enemyHoldingWeapon = gameObject.GetComponent<Enemy>();
-        EnemyEatsWeapon(enemyHoldingWeapon);
+        //EnemyEatsWeapon(enemyHoldingWeapon);
     }
 
     protected void EnemyEatsWeapon(Enemy enemy)
@@ -29,15 +24,8 @@ public class Weapon : MonoBehaviour
         Debug.Log("Enemy eats weapon");
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void Recharge()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Recharging Weapon.");
     }
 }

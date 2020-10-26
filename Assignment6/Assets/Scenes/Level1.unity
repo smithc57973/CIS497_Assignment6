@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 570969276}
   - component: {fileID: 570969275}
   - component: {fileID: 570969274}
+  - component: {fileID: 570969279}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -251,7 +252,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbc0a125681b5e4faa180e76fe96f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
+  lBound: -423
+  rBound: -300
+  tBound: 565
+  bBound: 497
+  speed: 0
+  health: 0
 --- !u!135 &570969275
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -322,12 +328,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570969273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 561.6, y: 488, z: -305.2}
+  m_LocalPosition: {x: 528.9, y: 488, z: -353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &570969279
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570969273}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1296773440
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,9 +445,10 @@ GameObject:
   - component: {fileID: 1319196105}
   - component: {fileID: 1319196104}
   - component: {fileID: 1319196103}
+  - component: {fileID: 1319196107}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -506,6 +529,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1319196107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319196102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93c0dfe56a8316448bd9528d15bb05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
 --- !u!1 &1783578510
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96db37b2077779438b8249810c2759f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   pauseMenu: {fileID: 0}
 --- !u!4 &2022973503
 Transform:

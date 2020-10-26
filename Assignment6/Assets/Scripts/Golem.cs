@@ -10,28 +10,25 @@ using UnityEngine;
 
 public class Golem : Enemy
 {
-    //Golem attributes
-    protected int damage;
-
-    protected override void Attack(int dmg)
-    {
-        Debug.Log("Golem attacks!");
-    }
+    //protected override void Attack(int dmg)
+    //{
+    //    Debug.Log("Golem attacks!");
+    //}
 
     protected override void Awake()
     {
         base.Awake();
-        GameManager.Instance.score += 2;
     }
 
-    public override void TakeDamage(int amount)
-    {
-        Debug.Log("You took " + amount + " damage.");
-    }
+    //public override void TakeDamage(int amount)
+    //{
+    //    Debug.Log("You took " + amount + " damage.");
+    //}
 
     // Update is called once per frame
     void Update()
     {
         
     }
+    
 }
