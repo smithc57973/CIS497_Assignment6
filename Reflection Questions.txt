@@ -1,0 +1,14 @@
+What is one class in your prototype that inherits from another class?  
+EasyEnemy (as well as the other enemy variants) inherit from Enemy.
+
+What is a class in your prototype that implements an Interface?  
+Player implements the IDamageable interface.
+
+Where did you use polymorphism in your code and what class did you substitute for what super-type?
+For the enemy damage I made use of the Weapon class and used it to link to an Enemy supertype.
+
+How would you call LoadLevel on your singleton game manager from another class?  
+GameManager.Instance.LoadLevel("levelname");
+
+Would you need to set up a reference to your game manager?  
+No, it exists throughout the project and doesn't need to be referenced since it is a singleton.

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Chris Smith
+ * Assignment 6
+ * Script to manage UI elements
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

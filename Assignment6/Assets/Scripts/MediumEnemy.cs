@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Chris Smith
+ * Assignment 6
+ * Script to manage the medium enemy type
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

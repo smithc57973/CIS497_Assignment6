@@ -1,0 +1,11 @@
+Chris Smith
+Assignment 6
+Githhub Link:
+https://github.com/smithc57973/CIS497_Assignment6
+
+Itch.io Link:
+https://smithc57973.itch.io/run-for-your-life
+
+The first scene to be loaded is the main menu.
+
+
