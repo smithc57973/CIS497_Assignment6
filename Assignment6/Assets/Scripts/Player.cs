@@ -11,8 +11,8 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable
 {
     //Map boundaries
-    public int lBound = -423;
-    public int rBound = -300;
+    public int lBound = -420;
+    public int rBound = -302;
     public int tBound = 565;
     public int bBound = 497;
 
@@ -46,6 +46,7 @@ public class Player : MonoBehaviour, IDamageable
         Vector3 move = transform.right * -z + transform.forward * x;
         //Apply move
         gameObject.transform.Translate(move * speed * Time.deltaTime);
+        
 
         //Keep the player in bounds
         if (gameObject.transform.position.x < bBound)
@@ -89,5 +90,4 @@ public class Player : MonoBehaviour, IDamageable
             TakeDamage(dmg);
         }
     }
-
 }
