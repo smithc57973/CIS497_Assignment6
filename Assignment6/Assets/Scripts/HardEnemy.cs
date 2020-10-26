@@ -1,20 +1,16 @@
-﻿/*
- * Chris Smith
- * Assignment 6
- * Script to manage the easy enemy type
- */
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EasyEnemy : Enemy
+public class HardEnemy : Enemy
 {
     protected override void Awake()
     {
         base.Awake();
-        gameObject.GetComponent<Renderer>().material.color = Color.green;
-        gameObject.transform.localScale = new Vector3(3, 3, 3);
-        weapon.dmgBonus = 1;
+        gameObject.GetComponent<Renderer>().material.color = Color.red;
+        gameObject.transform.localScale = new Vector3(1, 1, 1);
+        weapon.dmgBonus = 3;
+        speed = 15f;
     }
 
     // Update is called once per frame
@@ -22,5 +18,4 @@ public class EasyEnemy : Enemy
     {
         gameObject.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
-
 }

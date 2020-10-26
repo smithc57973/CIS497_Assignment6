@@ -20,11 +20,15 @@ public class Player : MonoBehaviour, IDamageable
     public float speed;
     public int health;
 
+    //Reference to UI
+    public UIManager uiManager;
+
     // Start is called before the first frame update
     public void Awake()
     {
         speed = 20f;
         health = 3;
+        uiManager = GameObject.FindObjectOfType<UIManager>();
     }
 
     public void TakeDamage(int amount)
@@ -61,18 +65,25 @@ public class Player : MonoBehaviour, IDamageable
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, rBound);
         }
 
-        //Return to main menu if die
+        //Display current health
+        uiManager.healthText.text = "Health: " + health;
+
+        //Return if dead
         if (health <= 0)
         {
-            GameManager.Instance.LoadLevel("MainMenu");
+            uiManager.loseText.enabled = true;
+            Time.timeScale = 0;
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                GameManager.Instance.ReturnToMenu();
+            }
+            
         }
     }
 
-    public void onCollisionEnter(Collision other)
+    public void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Collision");
-        Destroy(other.gameObject);
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.tag == "Enemy")
         {
             int dmg = other.gameObject.GetComponent<Weapon>().dmgBonus;
             TakeDamage(dmg);

@@ -4,6 +4,7 @@
  * Script to manage game state
  */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,11 +15,12 @@ public class GameManager : Singleton<GameManager>
     //public int score;
     public GameObject pauseMenu;
 
-    private string currentScene = string.Empty;
+    public string currentScene = string.Empty;
 
     public void LoadLevel(string levelName)
     {
         AsyncOperation ao = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
+        Time.timeScale = 1f;
         if (ao == null)
         {
             Debug.LogError("[GameManager] unable to load level");
@@ -63,6 +65,17 @@ public class GameManager : Singleton<GameManager>
         if (ao == null)
         {
             Debug.LogError("[GameManager] unable to unload level");
+            return;
+        }
+    }
+
+    public void ReturnToMenu()
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+        Time.timeScale = 1f;
+        if (ao == null)
+        {
+            Debug.LogError("[GameManager] unable to load level");
             return;
         }
     }

@@ -12,13 +12,14 @@ public abstract class Enemy : MonoBehaviour
 {
     //Enemy attributes
     protected float speed;
-    protected int damage;
     [SerializeField] protected Weapon weapon;
+    [SerializeField] protected Player player;
 
     protected virtual void Awake()
     {
         speed = 5f;
         weapon = gameObject.AddComponent<Weapon>();
+        player = GameObject.FindObjectOfType<Player>();
     }
     
 }
