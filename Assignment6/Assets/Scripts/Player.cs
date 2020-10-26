@@ -23,12 +23,16 @@ public class Player : MonoBehaviour, IDamageable
     //Reference to UI
     public UIManager uiManager;
 
+    //Reference to Rigidbody
+    public Rigidbody rb;
+
     // Start is called before the first frame update
     public void Awake()
     {
         speed = 20f;
         health = 3;
         uiManager = GameObject.FindObjectOfType<UIManager>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     public void TakeDamage(int amount)
@@ -43,9 +47,10 @@ public class Player : MonoBehaviour, IDamageable
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         //Create movement vector
-        Vector3 move = transform.right * -z + transform.forward * x;
+        //Vector3 move = transform.right * -z + transform.forward * x;
         //Apply move
-        gameObject.transform.Translate(move * speed * Time.deltaTime);
+        //gameObject.transform.Translate(move * speed * Time.deltaTime);
+        rb.MovePosition(transform.position + (transform.right * -z) + (transform.forward * x) * Time.deltaTime * speed);
         
 
         //Keep the player in bounds
