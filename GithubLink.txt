@@ -8,4 +8,5 @@ https://smithc57973.itch.io/run-for-your-life
 
 The first scene to be loaded is the main menu.
 
+Due to an issue I couldn't fix with Itch.io, the game is best played in fullscreen.
 

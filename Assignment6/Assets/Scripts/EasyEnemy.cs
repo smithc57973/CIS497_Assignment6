@@ -12,15 +12,10 @@ public class EasyEnemy : Enemy
     protected override void Awake()
     {
         base.Awake();
+        //Set specific properties
         gameObject.GetComponent<Renderer>().material.color = Color.green;
         gameObject.transform.localScale = new Vector3(3, 3, 3);
         weapon.dmgBonus = 1;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        gameObject.transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
 }

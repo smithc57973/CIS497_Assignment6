@@ -35,23 +35,22 @@ public class Player : MonoBehaviour, IDamageable
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
+    //Take damage from interface
     public void TakeDamage(int amount)
     {
         health -= amount;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Get movement input
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         //Create movement vector
-        //Vector3 move = transform.right * -z + transform.forward * x;
+        Vector3 move = transform.right * -z + transform.forward * x;
         //Apply move
-        //gameObject.transform.Translate(move * speed * Time.deltaTime);
-        rb.MovePosition(transform.position + (transform.right * -z) + (transform.forward * x) * Time.deltaTime * speed);
-        
+        rb.AddForce(move * speed, ForceMode.Force);
 
         //Keep the player in bounds
         if (gameObject.transform.position.x < bBound)
@@ -73,7 +72,11 @@ public class Player : MonoBehaviour, IDamageable
 
         //Display current health
         uiManager.healthText.text = "Health: " + health;
+        
+    }
 
+    void Update()
+    {
         //Return if dead
         if (health <= 0)
         {
@@ -83,10 +86,11 @@ public class Player : MonoBehaviour, IDamageable
             {
                 GameManager.Instance.ReturnToMenu();
             }
-            
+
         }
     }
 
+    //Collision event from enemies
     public void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Enemy")

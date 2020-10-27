@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Countdown the timer
         timer -= Time.deltaTime;
         timerText.text = "Time: " + timer.ToString("f0");
         if (timer <= 0)
